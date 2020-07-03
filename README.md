@@ -10,6 +10,7 @@ It is assumed that the session name is some directory.
 You can therefore use direnv to set the session name automatically:
 
 Example `.envrc` file
+
 ~~~
 export VIM_AUTOSESS_NAME="$PWD"
 ~~~
