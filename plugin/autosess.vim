@@ -14,7 +14,13 @@ let g:loaded_autosess = 1
 if !exists('g:autosess_dir')
 	let g:autosess_dir   = '~/.vim/autosess/'
 endif
-let s:session_file  = substitute(getcwd(), '[:\\/]', '%', 'g').'.vim'
+
+let s:session_file  = ""
+
+" Get the session name from the environment variable
+if $VIM_AUTOSESS_NAME != ""
+    let s:session_file = substitute($VIM_AUTOSESS_NAME, '[:\\/]', '%', 'g').'.vim'
+endif
 
 autocmd VimEnter *		if v:this_session == '' | let v:this_session = expand(g:autosess_dir).'/'.s:session_file | endif
 autocmd VimEnter * nested	if !argc()  | call AutosessRestore() | endif
